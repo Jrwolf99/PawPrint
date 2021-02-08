@@ -1,0 +1,36 @@
+name: K9Harness
+description: An app to track vitals on a K9 Unit
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.3
+  flutter_blue: ^0.7.3
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - fonts/
+    - images/
+
+  fonts:
+    - family: Amaranth
+      fonts:
+        - asset: fonts/Amaranth/Amaranth-Bold.ttf
+        - asset: fonts/Amaranth/Amaranth-BoldItalic.ttf
+        - asset: fonts/Amaranth/Amaranth-Italic.ttf
+        - asset: fonts/Amaranth/Amaranth-Regular.ttf
