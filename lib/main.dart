@@ -1,4 +1,4 @@
-import 'package:K9Harness/Bluetooth/Bluetooth.dart';
+import 'package:K9Harness/Pages/BluetoothPage.dart';
 import 'package:K9Harness/Utilities/NavBar.dart';
 import 'package:flutter/material.dart';
 import 'package:K9Harness/splashscreen.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => SplashScreen(),
         '/first': (context) => MyNavBar(),
-        '/second': (context) => FlutterBlueApp(),
+        '/second': (context) => MyBluetoothPage(),
         '/third': (context) => MyInfoPage(),
       },
     );
