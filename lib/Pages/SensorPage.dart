@@ -113,34 +113,11 @@ class _SensorPageState extends State<SensorPage> {
 
   @override
   Widget build(BuildContext context) {
-    Oscilloscope HeartRateScope = Oscilloscope(
-      showYAxis: true,
-      backgroundColor: Colors.black,
-      traceColor: Colors.green,
-      yAxisMax: 50.0,
-      yAxisMin: 0.0,
-      dataSet: HeartRateList,
-    );
-    Oscilloscope OxygenScope = Oscilloscope(
-      showYAxis: true,
-      backgroundColor: Colors.black,
-      traceColor: Colors.blue,
-      yAxisMax: 50.0,
-      yAxisMin: 0.0,
-      dataSet: OxygenList,
-    );
-    Oscilloscope TemperatureScope = Oscilloscope(
-      showYAxis: true,
-      backgroundColor: Colors.black,
-      traceColor: Colors.purple,
-      yAxisMax: 50.0,
-      yAxisMin: 0.0,
-      dataSet: TemperatureList,
-    );
-
     return Scaffold(
+      appBar: myFirstAppBar(),
+      body: widgetOptions[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AccentColor,
+        selectedItemColor: Colors.white,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
@@ -170,8 +147,6 @@ class _SensorPageState extends State<SensorPage> {
             onItemTap, //on item tap, go to the selected index, and update the current index to the
         /////////////////page that is desired: index of 0:Allvitalspage, 1:Heartrate, 2:oxygen, 3:temp
       ),
-      appBar: myAppBar(),
-      body: widgetOptions[selectedIndex],
     );
   }
 }

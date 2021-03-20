@@ -1,5 +1,4 @@
-import 'package:K9Harness/Pages/allvitals.dart';
-import 'package:K9Harness/Utilities/NavBar.dart';
+import 'package:K9Harness/Pages/AllvitalsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'theme.dart';

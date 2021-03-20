@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
-Widget myAppBar() {
+Widget myFirstAppBar() {
   return AppBar(
     centerTitle: true,
     backgroundColor: ButtonColor,
