@@ -68,11 +68,11 @@ class _HeartratePageState extends State<HeartratePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Expanded(
-                            flex: 3,
+                            flex: 1,
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Text('Current HeartRate: ',
+                                  Text('Current Heart Rate: ',
                                       style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.teal[900])),
