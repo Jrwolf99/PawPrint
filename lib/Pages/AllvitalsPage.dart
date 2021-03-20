@@ -73,7 +73,7 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Text('Current HeartRate: ',
+                                  Text('Current Heart Rate: ',
                                       style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.teal[900])),

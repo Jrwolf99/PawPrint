@@ -6,6 +6,7 @@ import 'package:K9Harness/Pages/HeartratePage.dart';
 import 'package:K9Harness/Utilities/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:oscilloscope/oscilloscope.dart';
 
 import '../theme.dart';
@@ -127,12 +128,12 @@ class _SensorPageState extends State<SensorPage> {
             backgroundColor: ButtonColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.spa),
+            icon: Icon(FontAwesome.heartbeat),
             label: "Heart Rate",
             backgroundColor: ButtonColor,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mood),
+            icon: Icon(MaterialCommunityIcons.airballoon),
             label: "SP02",
             backgroundColor: ButtonColor,
           ),

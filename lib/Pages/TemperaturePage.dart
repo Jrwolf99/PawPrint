@@ -68,7 +68,7 @@ class _TempPageState extends State<TempPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Expanded(
-                            flex: 3,
+                            flex: 1,
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
