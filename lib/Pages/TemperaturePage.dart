@@ -13,9 +13,12 @@ class _TempPageState extends State<TempPage> {
     return Container(
         child: !isReady
             ? Center(
-                child: Text(
-                  "Click to another page down below.",
-                  style: TextStyle(fontSize: 24, color: ButtonColor),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Waiting for device to connect... Click to another page down below. If that does not work, try to disconnect the phone or tablet from bluetooth and try to reconnect.",
+                    style: TextStyle(fontSize: 14, color: ButtonColor),
+                  ),
                 ),
               )
             : Container(
@@ -80,18 +83,10 @@ class _TempPageState extends State<TempPage> {
                                           fontSize: 24)),
                                 ]),
                           ),
-                          // Expanded(
-                          //   flex: 1,
-                          //   child: HeartRateScope,
-                          // ),
-                          // Expanded(
-                          //   flex: 1,
-                          //   child: OxygenScope,
-                          // ),
-                          // Expanded(
-                          //   flex: 1,
-                          //   child: TemperatureScope,
-                          // ),
+                          Expanded(
+                            flex: 1,
+                            child: TemperatureScope,
+                          ),
                         ],
                       ));
                     } else {

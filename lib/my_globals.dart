@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert' show utf8;
 import 'package:flutter/material.dart';
+import 'package:oscilloscope/oscilloscope.dart';
 
 var currentHeartRateValue;
 var currentOxygenValue;
@@ -19,3 +20,28 @@ String dataParser(List<int> dataFromDevice) {
   debugPrint("current value is-> ${utf8.decode(dataFromDevice)}");
   return utf8.decode(dataFromDevice);
 }
+
+Oscilloscope HeartRateScope = Oscilloscope(
+  showYAxis: true,
+  backgroundColor: Colors.black,
+  traceColor: Colors.teal,
+  yAxisMax: 50.0,
+  yAxisMin: 0.0,
+  dataSet: HeartRateList,
+);
+Oscilloscope OxygenScope = Oscilloscope(
+  showYAxis: true,
+  backgroundColor: Colors.black,
+  traceColor: Colors.blue,
+  yAxisMax: 50.0,
+  yAxisMin: 0.0,
+  dataSet: OxygenList,
+);
+Oscilloscope TemperatureScope = Oscilloscope(
+  showYAxis: true,
+  backgroundColor: Colors.black,
+  traceColor: Colors.purple,
+  yAxisMax: 50.0,
+  yAxisMin: 0.0,
+  dataSet: TemperatureList,
+);

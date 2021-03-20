@@ -5,7 +5,7 @@ class MyInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(),
+      appBar: myFirstAppBar(),
       body: Column(
         children: [
           Container(

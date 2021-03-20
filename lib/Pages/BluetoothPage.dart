@@ -67,7 +67,7 @@ class FindDevicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(),
+      appBar: myFirstAppBar(),
       body: RefreshIndicator(
         onRefresh: () => FlutterBlue.instance
             .startScan(
@@ -201,6 +201,7 @@ class DeviceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: ButtonColor,
         title: Text(device.name),
         actions: <Widget>[
           StreamBuilder<BluetoothDeviceState>(
