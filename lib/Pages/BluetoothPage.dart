@@ -4,8 +4,10 @@
 
 import 'dart:async';
 
+import 'package:K9Harness/Utilities/appbar.dart';
+import 'package:K9Harness/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:K9Harness/Pages/Sensor_page.dart';
+import 'package:K9Harness/Pages/SensorPage.dart';
 import 'package:K9Harness/Bluetooth/widgets.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
@@ -14,7 +16,7 @@ class MyBluetoothPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      color: Colors.lightBlue,
+      color: ButtonColor,
       home: StreamBuilder<BluetoothState>(
           stream: FlutterBlue.instance.state,
           initialData: BluetoothState.unknown,
@@ -37,7 +39,7 @@ class BluetoothOffScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: ButtonColor,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -65,16 +67,12 @@ class FindDevicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Find Devices'),
-      ),
+      appBar: myAppBar(),
       body: RefreshIndicator(
         onRefresh: () => FlutterBlue.instance
             .startScan(
                 scanMode: ScanMode.balanced,
-                withServices: [
-                  Guid("6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
-                ], //FIXME check the other ways where ".startScan" is implemented
+                withServices: [Guid("6E400001-B5A3-F393-E0A9-E50E24DCCA9E")],
                 timeout: Duration(seconds: 4))
             .catchError((error) {
           print("error starting scan $error");
@@ -152,7 +150,7 @@ class FindDevicesScreen extends StatelessWidget {
                             scanMode: ScanMode.balanced,
                             withServices: [
                               Guid("6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
-                            ], //FIXME check the other ways where ".startScan" is implemented
+                            ],
                             timeout: Duration(seconds: 4))
                         .catchError((error) {
                       print("error starting scan $error");

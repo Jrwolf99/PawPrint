@@ -1,7 +1,8 @@
 import 'package:K9Harness/Pages/BluetoothPage.dart';
-import 'package:K9Harness/Utilities/NavBar.dart';
+import 'package:K9Harness/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:K9Harness/splashscreen.dart';
+import 'Pages/IntroPage.dart';
 import 'splashscreen.dart';
 import 'package:K9Harness/Pages/InfoPage.dart';
 
@@ -13,12 +14,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'K9 Harness',
       theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(primary: ButtonColor),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(primary: ButtonColor),
+        ),
       ),
       initialRoute: '/',
       routes: {
         '/': (context) => SplashScreen(),
-        '/first': (context) => MyNavBar(),
+        '/first': (context) => IntroPage(),
         '/second': (context) => MyBluetoothPage(),
         '/third': (context) => MyInfoPage(),
       },
