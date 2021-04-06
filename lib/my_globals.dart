@@ -25,23 +25,23 @@ Oscilloscope HeartRateScope = Oscilloscope(
   showYAxis: true,
   backgroundColor: Colors.black,
   traceColor: Colors.teal,
-  yAxisMax: 50.0,
-  yAxisMin: 0.0,
+  yAxisMax: 100.0,
+  yAxisMin: 20.0,
   dataSet: HeartRateList,
 );
 Oscilloscope OxygenScope = Oscilloscope(
   showYAxis: true,
   backgroundColor: Colors.black,
   traceColor: Colors.blue,
-  yAxisMax: 50.0,
-  yAxisMin: 0.0,
+  yAxisMax: 120.0,
+  yAxisMin: 80.0,
   dataSet: OxygenList,
 );
 Oscilloscope TemperatureScope = Oscilloscope(
   showYAxis: true,
   backgroundColor: Colors.black,
   traceColor: Colors.purple,
-  yAxisMax: 50.0,
-  yAxisMin: 0.0,
+  yAxisMax: 120.0,
+  yAxisMin: 80.0,
   dataSet: TemperatureList,
 );

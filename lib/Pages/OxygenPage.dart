@@ -37,30 +37,31 @@ class _OxygenPageState extends State<OxygenPage> {
                       debugPrint(
                           "snapshot.connectionState: ${snapshot.connectionState}.");
                       debugPrint("snapshot.hasdata?: ${snapshot.hasData}.");
-
                       var currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
 
-                      if (currentValue[0] == 'H') {
-                        currentHeartRateValue =
-                            currentValue.substring(1, currentValue.length - 1);
-                        HeartRateList.add(
-                            double.tryParse(currentHeartRateValue) ?? 0);
-                      }
-
-                      if (currentValue[0] == 'S') {
-                        currentOxygenValue =
-                            currentValue.substring(1, currentValue.length - 1);
-                        OxygenList.add(
-                            double.tryParse(currentOxygenValue) ?? 0);
-                      }
-
                       if (currentValue[0] == 'T') {
-                        currentTemperatureValue =
-                            currentValue.substring(1, currentValue.length - 1);
+                        currentTemperatureValue = currentValue.substring(
+                            (currentValue.indexOf("T") + 1),
+                            currentValue.indexOf("H"));
+                        currentHeartRateValue = currentValue.substring(
+                            (currentValue.indexOf("H") + 1),
+                            currentValue.indexOf("S"));
+                        currentOxygenValue = currentValue.substring(
+                            currentValue.indexOf("S") + 1,
+                            currentValue.length - 1);
                         TemperatureList.add(
                             double.tryParse(currentTemperatureValue) ?? 0);
+                        HeartRateList.add(
+                            double.tryParse(currentHeartRateValue) ?? 0);
+                        OxygenList.add(
+                            double.tryParse(currentOxygenValue) ?? 0);
+                      } else {
+                        currentTemperatureValue = "err";
+                        currentHeartRateValue = "err";
+                        currentOxygenValue = "err";
                       }
+
                       //finally, return the stateless page with the value that we want: (currentTemperatureValue etc.)
                       //this includes an updated scope on the page.
                       return Center(
@@ -76,7 +77,7 @@ class _OxygenPageState extends State<OxygenPage> {
                                       style: TextStyle(
                                           fontSize: 18,
                                           color: Colors.blue[900])),
-                                  Text('$currentOxygenValue',
+                                  Text('$currentOxygenValue%',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.blue,
