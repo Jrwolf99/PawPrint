@@ -40,3 +40,5 @@ Oscilloscope TemperatureScope = Oscilloscope(
   yAxisMin: 80.0,
   dataSet: TemperatureList,
 );
+
+Timer myErrorWatchdogTimer;
