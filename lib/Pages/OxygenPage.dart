@@ -1,3 +1,4 @@
+import 'package:K9Harness/Utilities/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:K9Harness/theme.dart';
 import 'package:K9Harness/my_globals.dart';
@@ -41,25 +42,9 @@ class _OxygenPageState extends State<OxygenPage> {
                       debugPrint(currentValue);
 
                       if (currentValue[0] == 'T') {
-                        currentTemperatureValue = currentValue.substring(
-                            (currentValue.indexOf("T") + 1),
-                            currentValue.indexOf("H"));
-                        currentHeartRateValue = currentValue.substring(
-                            (currentValue.indexOf("H") + 1),
-                            currentValue.indexOf("S"));
-                        currentOxygenValue = currentValue.substring(
-                            currentValue.indexOf("S") + 1,
-                            currentValue.length - 1);
-                        TemperatureList.add(
-                            double.tryParse(currentTemperatureValue) ?? 0);
-                        HeartRateList.add(
-                            double.tryParse(currentHeartRateValue) ?? 0);
-                        OxygenList.add(
-                            double.tryParse(currentOxygenValue) ?? 0);
+                        updateVitalLists();
                       } else {
-                        currentTemperatureValue = "err";
-                        currentHeartRateValue = "err";
-                        currentOxygenValue = "err";
+                        errorLists();
                       }
 
                       //finally, return the stateless page with the value that we want: (currentTemperatureValue etc.)
