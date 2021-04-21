@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert' show utf8;
 import 'package:flutter/material.dart';
 import 'package:oscilloscope/oscilloscope.dart';
 
@@ -16,11 +15,6 @@ bool isReady;
 List<double> HeartRateList = List();
 List<double> OxygenList = List();
 List<double> TemperatureList = List();
-
-String dataParser(List<int> dataFromDevice) {
-  debugPrint("current value is-> ${utf8.decode(dataFromDevice)}");
-  return utf8.decode(dataFromDevice);
-}
 
 Oscilloscope HeartRateScope = Oscilloscope(
   showYAxis: true,

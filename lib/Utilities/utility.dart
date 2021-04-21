@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:K9Harness/my_globals.dart';
+import 'dart:convert' show utf8;
 
 void updateVitalLists() {
   currentTemperatureValue = currentValue.substring(
@@ -17,4 +18,9 @@ void errorLists() {
   currentTemperatureValue = "err";
   currentHeartRateValue = "err";
   currentOxygenValue = "err";
+}
+
+String dataParser(List<int> dataFromDevice) {
+  debugPrint("current value is-> ${utf8.decode(dataFromDevice)}");
+  return utf8.decode(dataFromDevice);
 }

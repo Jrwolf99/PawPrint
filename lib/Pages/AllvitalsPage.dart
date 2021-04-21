@@ -33,11 +33,11 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                       return Text('Error: ${snapshot.error}');
 
                     if (snapshot.connectionState == ConnectionState.active) {
-                      debugPrint("snapshot.error: ${snapshot.error}.");
-                      debugPrint("snapshot.data: ${snapshot.error}.");
-                      debugPrint(
-                          "snapshot.connectionState: ${snapshot.connectionState}.");
-                      debugPrint("snapshot.hasdata?: ${snapshot.hasData}.");
+                      // debugPrint("snapshot.error: ${snapshot.error}.");
+                      // debugPrint("snapshot.data: ${snapshot.error}.");
+                      // debugPrint(
+                      //     "snapshot.connectionState: ${snapshot.connectionState}.");
+                      // debugPrint("snapshot.hasdata?: ${snapshot.hasData}.");
 
                       currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
