@@ -3,10 +3,11 @@ import 'dart:convert' show utf8;
 import 'package:flutter/material.dart';
 import 'package:oscilloscope/oscilloscope.dart';
 
+var currentValue;
+
 var currentHeartRateValue;
 var currentOxygenValue;
 var currentTemperatureValue;
-//Stream<List<int>> mystream;
 
 StreamController<List<int>> mystream = StreamController<List<int>>.broadcast();
 

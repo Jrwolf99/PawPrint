@@ -38,7 +38,7 @@ class _TempPageState extends State<TempPage> {
                           "snapshot.connectionState: ${snapshot.connectionState}.");
                       debugPrint("snapshot.hasdata?: ${snapshot.hasData}.");
 
-                      var currentValue = dataParser(snapshot.data);
+                      currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
 
                       if (currentValue[0] == 'T') {

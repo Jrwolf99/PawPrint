@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:K9Harness/theme.dart';
 import 'package:K9Harness/my_globals.dart';
-import 'dart:math';
 
 class AllvitalsPage extends StatefulWidget {
   @override
@@ -39,7 +38,7 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                           "snapshot.connectionState: ${snapshot.connectionState}.");
                       debugPrint("snapshot.hasdata?: ${snapshot.hasData}.");
 
-                      var currentValue = dataParser(snapshot.data);
+                      currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
 
                       if (currentValue[0] == 'T') {

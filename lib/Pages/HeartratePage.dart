@@ -37,7 +37,7 @@ class _HeartratePageState extends State<HeartratePage> {
                       debugPrint(
                           "snapshot.connectionState: ${snapshot.connectionState}.");
                       debugPrint("snapshot.hasdata?: ${snapshot.hasData}.");
-                      var currentValue = dataParser(snapshot.data);
+                      currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
 
                       if (currentValue[0] == 'T') {
