@@ -12,9 +12,9 @@ StreamController<List<int>> mystream = StreamController<List<int>>.broadcast();
 
 bool isReady;
 
-List<double> HeartRateList = List();
-List<double> OxygenList = List();
-List<double> TemperatureList = List();
+List<double> HeartRateList = [];
+List<double> OxygenList = [];
+List<double> TemperatureList = [];
 
 Oscilloscope HeartRateScope = Oscilloscope(
   showYAxis: true,
