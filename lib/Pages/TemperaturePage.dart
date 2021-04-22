@@ -1,8 +1,12 @@
+import 'package:K9Harness/Utilities/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:K9Harness/theme.dart';
 import 'package:K9Harness/my_globals.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 
 class TempPage extends StatefulWidget {
+  const TempPage({this.device});
+  final BluetoothDevice device;
   @override
   _TempPageState createState() => _TempPageState();
 }
@@ -31,36 +35,21 @@ class _TempPageState extends State<TempPage> {
                     if (snapshot.hasError)
                       return Text('Error: ${snapshot.error}');
 
-                    if (snapshot.connectionState == ConnectionState.active) {
-                      debugPrint("snapshot.error: ${snapshot.error}.");
-                      debugPrint("snapshot.data: ${snapshot.error}.");
-                      debugPrint(
-                          "snapshot.connectionState: ${snapshot.connectionState}.");
-                      debugPrint("snapshot.hasdata?: ${snapshot.hasData}.");
+                    if ((snapshot.connectionState == ConnectionState.active) &&
+                        snapshot.data != null) {
+                      // debugPrint("snapshot.error: ${snapshot.error}.");
+                      // debugPrint("snapshot.data: ${snapshot.error}.");
+                      // debugPrint(
+                      //     "snapshot.connectionState: ${snapshot.connectionState}.");
+                      // debugPrint("snapshot.hasdata?: ${snapshot.hasData}.");
 
                       currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
 
                       if (currentValue[0] == 'T') {
-                        currentTemperatureValue = currentValue.substring(
-                            (currentValue.indexOf("T") + 1),
-                            currentValue.indexOf("H"));
-                        currentHeartRateValue = currentValue.substring(
-                            (currentValue.indexOf("H") + 1),
-                            currentValue.indexOf("S"));
-                        currentOxygenValue = currentValue.substring(
-                            currentValue.indexOf("S") + 1,
-                            currentValue.length - 1);
-                        TemperatureList.add(
-                            double.tryParse(currentTemperatureValue) ?? 0);
-                        HeartRateList.add(
-                            double.tryParse(currentHeartRateValue) ?? 0);
-                        OxygenList.add(
-                            double.tryParse(currentOxygenValue) ?? 0);
+                        updateVitalLists();
                       } else {
-                        currentTemperatureValue = "err";
-                        currentHeartRateValue = "err";
-                        currentOxygenValue = "err";
+                        errorLists(context, widget.device);
                       }
 
                       //finally, return the stateless page with the value that we want: (currentTemperatureValue etc.)

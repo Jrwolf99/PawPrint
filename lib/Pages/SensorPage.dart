@@ -1,13 +1,9 @@
 import 'dart:async';
-import 'dart:convert' show utf8;
-import 'dart:math';
-
 import 'package:K9Harness/Pages/HeartratePage.dart';
 import 'package:K9Harness/Utilities/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:oscilloscope/oscilloscope.dart';
 
 import '../theme.dart';
 import 'AllvitalsPage.dart';
@@ -17,8 +13,9 @@ import 'TemperaturePage.dart';
 import 'package:K9Harness/my_globals.dart';
 
 class SensorPage extends StatefulWidget {
-  const SensorPage({Key key, this.device}) : super(key: key);
   final BluetoothDevice device;
+  SensorPage({Key key, @required this.device}) : super(key: key);
+
   @override
   _SensorPageState createState() => _SensorPageState();
 }
@@ -28,15 +25,10 @@ class _SensorPageState extends State<SensorPage> {
   final String CHARACTERISTIC_UUID = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
 
   //initialize stream here?
-  List<double> traceDust = List();
+  List<double> traceDust = [];
 
   int selectedIndex = 0;
-  List<Widget> widgetOptions = <Widget>[
-    AllvitalsPage(),
-    HeartratePage(),
-    OxygenPage(),
-    TempPage(),
-  ];
+  List<Widget> widgetOptions;
 
   void onItemTap(int index) {
     setState(() {
@@ -46,6 +38,13 @@ class _SensorPageState extends State<SensorPage> {
 
   @override
   void initState() {
+    widgetOptions = <Widget>[
+      AllvitalsPage(device: widget.device),
+      HeartratePage(device: widget.device),
+      OxygenPage(device: widget.device),
+      TempPage(device: widget.device),
+    ];
+
     super.initState();
     isReady = false;
     connectToDevice();

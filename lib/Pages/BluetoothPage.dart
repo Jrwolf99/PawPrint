@@ -1,7 +1,6 @@
 // Copyright 2017, Paul DeMarco.
 // All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-//TODO
 import 'dart:async';
 
 import 'package:K9Harness/Utilities/appbar.dart';
@@ -164,7 +163,6 @@ class FindDevicesScreen extends StatelessWidget {
 
 class DeviceScreen extends StatelessWidget {
   const DeviceScreen({Key key, this.device}) : super(key: key);
-
   final BluetoothDevice device;
 
   List<Widget> _buildServiceTiles(List<BluetoothService> services) {
