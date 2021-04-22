@@ -45,7 +45,7 @@ class _HeartratePageState extends State<HeartratePage> {
                       if (currentValue[0] == 'T') {
                         updateVitalLists();
                       } else {
-                        errorLists();
+                        errorLists(context);
                       }
 
                       //finally, return the stateless page with the value that we want: (currentTemperatureValue etc.)

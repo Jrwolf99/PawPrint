@@ -19,10 +19,10 @@ void updateVitalLists() {
   OxygenList.add(double.tryParse(currentOxygenValue) ?? 0);
 }
 
-void errorLists() {
+void errorLists(BuildContext context) {
   //start the error timer, and the callback function in the timer will reach 10
   //seconds and then alert the user that an error has occurred.
-  myErrorWatchdogTimer = startTimer(); //call the startTimer function.
+  myErrorWatchdogTimer = startTimer(context); //call the startTimer function.
   // currentTemperatureValue = "err";
   // currentHeartRateValue = "err";
   // currentOxygenValue = "err";
@@ -34,8 +34,38 @@ String dataParser(List<int> dataFromDevice) {
 }
 
 //start the timer, and after 10 seconds alert user of error.
-Timer startTimer() {
+
+Timer startTimer(BuildContext context) {
+  final List<dynamic> args = ["Error Occurred", "Reconnect Dog."];
   return Timer(Duration(seconds: 10), () {
-    debugPrint("10 SECONDS REACHED!");
+    showDialog(
+      context: context,
+      builder: (ctx) => (CustomAlertDialogBox(args)),
+    );
   });
+}
+
+class CustomAlertDialogBox extends StatelessWidget {
+  final List<dynamic> args;
+
+  CustomAlertDialogBox(this.args);
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(args[0]),
+      content: Text(args[1]),
+      actions: <Widget>[
+        FlatButton(
+          onPressed: () {
+            //this pops the screen twice.
+            var nav = Navigator.of(context);
+            nav.pop();
+            nav.pop();
+          },
+          child: Text("Close"),
+        ),
+      ],
+    );
+  }
 }
