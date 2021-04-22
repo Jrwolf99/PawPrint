@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:K9Harness/my_globals.dart';
 import 'dart:convert' show utf8;
 import 'dart:async';
+import 'package:K9Harness/main.dart';
 
 void updateVitalLists() {
   if (currentValue != null)
@@ -58,10 +59,8 @@ class CustomAlertDialogBox extends StatelessWidget {
       actions: <Widget>[
         FlatButton(
           onPressed: () {
-            //this pops the screen twice.
-            var nav = Navigator.of(context);
-            nav.pop();
-            nav.pop();
+            isReady = false;
+            RestartWidget.restartApp(context);
           },
           child: Text("Close"),
         ),
