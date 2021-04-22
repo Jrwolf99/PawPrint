@@ -46,8 +46,11 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                       currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
 
-                      if (currentValue[0] == 'T') {
-                        updateVitalLists();
+                      //if the data is good to be graphed
+                      if ((currentValue[0] == 'T') && (currentValue != null)) {
+                        //if the data is ALSO within good range of previous value, print.
+
+                        passToLists();
                       } else {
                         errorLists(context, widget.device);
                       }

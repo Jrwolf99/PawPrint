@@ -45,8 +45,9 @@ class _OxygenPageState extends State<OxygenPage> {
                       currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
 
-                      if (currentValue[0] == 'T') {
-                        updateVitalLists();
+                      //if the data is good to be graphed
+                      if ((currentValue[0] == 'T') && (currentValue != null)) {
+                        passToLists();
                       } else {
                         errorLists(context, widget.device);
                       }
