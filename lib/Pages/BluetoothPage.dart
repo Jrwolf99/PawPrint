@@ -163,7 +163,6 @@ class FindDevicesScreen extends StatelessWidget {
 
 class DeviceScreen extends StatelessWidget {
   const DeviceScreen({Key key, this.device}) : super(key: key);
-
   final BluetoothDevice device;
 
   List<Widget> _buildServiceTiles(List<BluetoothService> services) {

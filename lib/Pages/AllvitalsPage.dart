@@ -2,8 +2,11 @@ import 'package:K9Harness/Utilities/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:K9Harness/theme.dart';
 import 'package:K9Harness/my_globals.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 
 class AllvitalsPage extends StatefulWidget {
+  const AllvitalsPage({this.device});
+  final BluetoothDevice device;
   @override
   _AllvitalsPageState createState() => _AllvitalsPageState();
 }
@@ -46,7 +49,7 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                       if (currentValue[0] == 'T') {
                         updateVitalLists();
                       } else {
-                        errorLists(context);
+                        errorLists(context, widget.device);
                       }
 
                       //finally, return the stateless page with the value that we want: (currentTemperatureValue etc.)

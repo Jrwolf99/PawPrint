@@ -3,6 +3,7 @@ import 'package:K9Harness/my_globals.dart';
 import 'dart:convert' show utf8;
 import 'dart:async';
 import 'package:K9Harness/main.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 
 void updateVitalLists() {
   if (currentValue != null)
@@ -20,10 +21,11 @@ void updateVitalLists() {
   OxygenList.add(double.tryParse(currentOxygenValue) ?? 0);
 }
 
-void errorLists(BuildContext context) {
+void errorLists(BuildContext context, BluetoothDevice device) {
   //start the error timer, and the callback function in the timer will reach 10
   //seconds and then alert the user that an error has occurred.
-  myErrorWatchdogTimer = startTimer(context); //call the startTimer function.
+  myErrorWatchdogTimer =
+      startTimer(context, device); //call the startTimer function.
   // currentTemperatureValue = "err";
   // currentHeartRateValue = "err";
   // currentOxygenValue = "err";
@@ -36,20 +38,21 @@ String dataParser(List<int> dataFromDevice) {
 
 //start the timer, and after 10 seconds alert user of error.
 
-Timer startTimer(BuildContext context) {
+Timer startTimer(BuildContext context, BluetoothDevice device) {
   final List<dynamic> args = ["Error Occurred", "Reconnect Dog."];
   return Timer(Duration(seconds: 10), () {
     showDialog(
       context: context,
-      builder: (ctx) => (CustomAlertDialogBox(args)),
+      builder: (ctx) => (CustomAlertDialogBox(args, device)),
     );
   });
 }
 
 class CustomAlertDialogBox extends StatelessWidget {
   final List<dynamic> args;
+  final BluetoothDevice device;
 
-  CustomAlertDialogBox(this.args);
+  CustomAlertDialogBox(this.args, this.device);
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +62,7 @@ class CustomAlertDialogBox extends StatelessWidget {
       actions: <Widget>[
         FlatButton(
           onPressed: () {
-            isReady = false;
+            device.disconnect();
             RestartWidget.restartApp(context);
           },
           child: Text("Close"),
