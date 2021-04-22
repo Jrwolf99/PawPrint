@@ -32,7 +32,8 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                     if (snapshot.hasError)
                       return Text('Error: ${snapshot.error}');
 
-                    if (snapshot.connectionState == ConnectionState.active) {
+                    if ((snapshot.connectionState == ConnectionState.active) &&
+                        snapshot.data != null) {
                       // debugPrint("snapshot.error: ${snapshot.error}.");
                       // debugPrint("snapshot.data: ${snapshot.error}.");
                       // debugPrint(
