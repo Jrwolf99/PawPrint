@@ -20,7 +20,7 @@ Oscilloscope HeartRateScope = Oscilloscope(
   showYAxis: true,
   backgroundColor: Colors.black,
   traceColor: Colors.teal,
-  yAxisMax: 100.0,
+  yAxisMax: 250.0,
   yAxisMin: 20.0,
   dataSet: HeartRateList,
 );
