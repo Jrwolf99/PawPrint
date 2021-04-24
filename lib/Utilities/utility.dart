@@ -5,7 +5,14 @@ import 'dart:async';
 import 'package:K9Harness/main.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
-void passToLists() {
+void passToLists(BuildContext context, BluetoothDevice device) {
+  Timer HRErrorTimer = startTimer(
+      context, device, "Bad Heart Rate data. Try reconnecting to K9.");
+  Timer TEMPErrorTimer = startTimer(
+      context, device, "Bad Temperature data. Try reconnecting to K9.");
+  Timer SPO2ErrorTimer =
+      startTimer(context, device, "Bad SP02 data. Try reconnecting to K9.");
+
   if (myErrorWatchdogTimer != null)
     myErrorWatchdogTimer
         .cancel(); //stop the timer if good data has come through.
@@ -29,15 +36,34 @@ void passToLists() {
     double prevTempValue = TemperatureList.last;
     double prevHRValue = HeartRateList.last;
     double prevOxValue = OxygenList.last;
+
+    //start TEMP error timer if TEMP data is out of range.
     if (currTempValue <= .75 * prevTempValue &&
-        currTempValue >= 1.25 * prevTempValue) return;
-    //add to HR list if in good range
-    if (currHRValue <= .75 * prevHRValue && currHRValue >= 1.25 * prevHRValue)
+        currTempValue >= 1.25 * prevTempValue) {
+      debugPrint("---KEEP ERROR TIMER FOR TEMP---");
       return;
+    } else if (TEMPErrorTimer.isActive) {
+      debugPrint("---CANCELLING TIMER TEMP---");
+      TEMPErrorTimer.cancel();
+    }
+
+    //start HR error timer if HR data is out of range.
+    if (currHRValue <= .75 * prevHRValue && currHRValue >= 1.25 * prevHRValue) {
+      debugPrint("---KEEP ERROR TIMER FOR HR---");
+      return;
+    } else if (HRErrorTimer.isActive) {
+      debugPrint("---CANCELLING HR TEMP---");
+      HRErrorTimer.cancel();
+    }
 
     //add to Oxygen list if in good range
-    if (currOxValue <= (prevOxValue - 5) && currOxValue >= (prevOxValue + 5))
+    if (currOxValue <= (prevOxValue - 5) && currOxValue >= (prevOxValue + 5)) {
+      debugPrint("---KEEP ERROR TIMER FOR SPO2---");
       return;
+    } else if (SPO2ErrorTimer.isActive) {
+      debugPrint("---CANCELLING SPO2 TEMP---");
+      SPO2ErrorTimer.cancel();
+    }
   }
 
   TemperatureList.add(currTempValue ?? 0);
@@ -48,8 +74,8 @@ void passToLists() {
 void errorLists(BuildContext context, BluetoothDevice device) {
   //start the error timer, and the callback function in the timer will reach 10
   //seconds and then alert the user that an error has occurred.
-  myErrorWatchdogTimer =
-      startTimer(context, device); //call the startTimer function.
+  myErrorWatchdogTimer = startTimer(context, device,
+      "Bad radio data transmission. Numbers were not in the proper format."); //call the startTimer function.
 }
 
 String dataParser(List<int> dataFromDevice) {
@@ -59,8 +85,8 @@ String dataParser(List<int> dataFromDevice) {
 
 //start the timer, and after 10 seconds alert user of error.
 
-Timer startTimer(BuildContext context, BluetoothDevice device) {
-  final List<dynamic> args = ["Error Occurred", "Reconnect Dog."];
+Timer startTimer(BuildContext context, BluetoothDevice device, String desc) {
+  final List<dynamic> args = ["Error Occurred", "$desc"];
   return Timer(Duration(seconds: 10), () {
     showDialog(
       context: context,

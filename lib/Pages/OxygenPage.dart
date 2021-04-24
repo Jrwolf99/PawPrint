@@ -47,7 +47,7 @@ class _OxygenPageState extends State<OxygenPage> {
 
                       //if the data is good to be graphed
                       if ((currentValue[0] == 'T') && (currentValue != null)) {
-                        passToLists();
+                        passToLists(context, widget.device);
                       } else {
                         errorLists(context, widget.device);
                       }

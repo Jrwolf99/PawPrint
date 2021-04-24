@@ -50,7 +50,7 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                       if ((currentValue[0] == 'T') && (currentValue != null)) {
                         //if the data is ALSO within good range of previous value, print.
 
-                        passToLists();
+                        passToLists(context, widget.device);
                       } else {
                         errorLists(context, widget.device);
                       }
