@@ -81,7 +81,7 @@ class _OxygenPageState extends State<OxygenPage> {
                         ],
                       ));
                     } else {
-                      return Text('Check the stream');
+                      return Center(child: Text('Waiting...'));
                     }
                   },
                 ),

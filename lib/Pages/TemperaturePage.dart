@@ -82,7 +82,7 @@ class _TempPageState extends State<TempPage> {
                         ],
                       ));
                     } else {
-                      return Text('Check the stream');
+                      return Center(child: Text('Waiting...'));
                     }
                   },
                 ),

@@ -110,7 +110,7 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                         ],
                       ));
                     } else {
-                      return Text('Check the stream');
+                      return Center(child: Text('Waiting...'));
                     }
                   },
                 ),

@@ -81,7 +81,7 @@ class _HeartratePageState extends State<HeartratePage> {
                         ],
                       ));
                     } else {
-                      return Text('Check the stream');
+                      return Center(child: Text('Waiting...'));
                     }
                   },
                 ),
