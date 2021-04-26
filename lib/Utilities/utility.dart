@@ -8,9 +8,6 @@ void passToLists(BuildContext context, BluetoothDevice device) {
   bool goodTempData = true;
   bool goodHRData = true;
   bool goodOxData = true;
-  if (TemperatureList.isNotEmpty)
-    myErrorWatchdogTimer
-        .cancel(); //stop the timer if good data has come through.
 
   //parse out the data into the three separate numbers.
   currentTemperatureValue = currentValue.substring(
@@ -28,14 +25,6 @@ void passToLists(BuildContext context, BluetoothDevice device) {
   debugPrint("here is the curr HR val: " + "$currHRValue");
   debugPrint("here is the curr Ox val: " + "$currOxValue");
 
-  //add to temp list if in good range
-  HRErrorTimer = startTimer(
-      context, device, "Bad Heart Rate data. Try reconnecting to K9.");
-  TEMPErrorTimer = startTimer(
-      context, device, "Bad Temperature data. Try reconnecting to K9.");
-  SPO2ErrorTimer =
-      startTimer(context, device, "Bad SP02 data. Try reconnecting to K9.");
-
   //create our previous bool values
   double prevTempValue = TemperatureList.last;
   double prevHRValue = HeartRateList.last;
@@ -49,7 +38,6 @@ void passToLists(BuildContext context, BluetoothDevice device) {
   if ((currTempValue <= (.75 * prevTempValue)) &&
       (currTempValue >= (1.25 * prevTempValue))) {
     goodTempData = false; //received bad temp data
-    debugPrint("---KEEP ERROR TIMER FOR TEMP---");
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text("Out Of Range Temperature Data"),
@@ -58,8 +46,6 @@ void passToLists(BuildContext context, BluetoothDevice device) {
     );
   }
   if (goodTempData) {
-    debugPrint("---CANCELLING TIMER TEMP---");
-    TEMPErrorTimer.cancel();
     TemperatureList.add(currTempValue ?? 0);
   }
 
@@ -67,7 +53,6 @@ void passToLists(BuildContext context, BluetoothDevice device) {
   if ((currHRValue <= (.75 * prevHRValue)) &&
       (currHRValue >= (1.25 * prevHRValue))) {
     goodHRData = false; //recieved bad HR data
-    debugPrint("---KEEP ERROR TIMER FOR HR---");
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text("Out Of Range Heart Rate Data"),
@@ -76,8 +61,6 @@ void passToLists(BuildContext context, BluetoothDevice device) {
     );
   }
   if (goodHRData) {
-    debugPrint("---CANCELLING HR TEMP---");
-    HRErrorTimer.cancel();
     HeartRateList.add(currHRValue ?? 0);
   }
 
@@ -85,7 +68,6 @@ void passToLists(BuildContext context, BluetoothDevice device) {
   if ((currOxValue <= (prevOxValue - 5)) &&
       (currOxValue >= (prevOxValue + 5))) {
     goodOxData = false;
-    debugPrint("---KEEP ERROR TIMER FOR SPO2---");
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text("Out Of Range SPO2 Data"),
@@ -94,8 +76,6 @@ void passToLists(BuildContext context, BluetoothDevice device) {
     );
   }
   if (goodOxData) {
-    debugPrint("---CANCELLING SPO2 TEMP---");
-    SPO2ErrorTimer.cancel();
     OxygenList.add(currOxValue ?? 0);
   }
 
@@ -150,12 +130,24 @@ class CustomAlertDialogBox extends StatelessWidget {
         FlatButton(
           onPressed: () {
             device.disconnect();
-            //RestartWidget.restartApp(context);
-            Navigator.pushReplacementNamed(context, '/second');
+            Navigator.pushReplacementNamed(context, "/second");
           },
           child: Text("Close"),
         ),
       ],
     );
   }
+}
+
+Widget disconnect_button(BuildContext context, BluetoothDevice device) {
+  return ElevatedButton(
+    child: Text(
+      'Disconnect',
+      style: TextStyle(fontSize: 15, color: Colors.white),
+    ),
+    onPressed: (() {
+      device.disconnect();
+      Navigator.pushReplacementNamed(context, "/second");
+    }),
+  );
 }
