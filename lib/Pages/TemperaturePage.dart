@@ -47,10 +47,17 @@ class _TempPageState extends State<TempPage> {
                       debugPrint(currentValue);
 
                       //if the data is good to be graphed
-                      if ((currentValue[0] == 'T') && (currentValue != null)) {
-                        passToLists(context, widget.device);
-                      } else {
-                        errorLists(context, widget.device);
+                      if (currentValue != null) {
+                        //if the data is good to be graphed
+                        if ((currentValue.contains("T")) &&
+                            (currentValue.contains("H")) &&
+                            (currentValue.contains("S"))) {
+                          //if the data is ALSO within good range of previous value, print.
+
+                          passToLists(context, widget.device);
+                        } else {
+                          errorLists(context, widget.device);
+                        }
                       }
 
                       //finally, return the stateless page with the value that we want: (currentTemperatureValue etc.)

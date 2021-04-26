@@ -41,4 +41,12 @@ Oscilloscope TemperatureScope = Oscilloscope(
   dataSet: TemperatureList,
 );
 
+//Timer
 Timer myErrorWatchdogTimer;
+Timer HRErrorTimer;
+Timer TEMPErrorTimer;
+Timer SPO2ErrorTimer;
+
+bool goodTempData = true;
+bool goodHRData = true;
+bool goodOxData = true;

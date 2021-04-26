@@ -45,14 +45,17 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
 
                       currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
+                      if (currentValue != null) {
+                        //if the data is good to be graphed
+                        if ((currentValue.contains("T")) &&
+                            (currentValue.contains("H")) &&
+                            (currentValue.contains("S"))) {
+                          //if the data is ALSO within good range of previous value, print.
 
-                      //if the data is good to be graphed
-                      if ((currentValue[0] == 'T') && (currentValue != null)) {
-                        //if the data is ALSO within good range of previous value, print.
-
-                        passToLists(context, widget.device);
-                      } else {
-                        errorLists(context, widget.device);
+                          passToLists(context, widget.device);
+                        } else {
+                          errorLists(context, widget.device);
+                        }
                       }
 
                       //finally, return the stateless page with the value that we want: (currentTemperatureValue etc.)
