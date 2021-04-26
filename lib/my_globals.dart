@@ -12,9 +12,9 @@ StreamController<List<int>> mystream = StreamController<List<int>>.broadcast();
 
 bool isReady;
 
-List<double> HeartRateList = [];
-List<double> OxygenList = [];
-List<double> TemperatureList = [];
+List<double> HeartRateList = [1];
+List<double> OxygenList = [1];
+List<double> TemperatureList = [1];
 
 Oscilloscope HeartRateScope = Oscilloscope(
   showYAxis: true,
@@ -46,7 +46,3 @@ Timer myErrorWatchdogTimer;
 Timer HRErrorTimer;
 Timer TEMPErrorTimer;
 Timer SPO2ErrorTimer;
-
-bool goodTempData = true;
-bool goodHRData = true;
-bool goodOxData = true;
