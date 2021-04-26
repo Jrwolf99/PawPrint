@@ -87,7 +87,7 @@ String dataParser(List<int> dataFromDevice) {
 
 Timer startTimer(BuildContext context, BluetoothDevice device, String desc) {
   final List<dynamic> args = ["Error Occurred", "$desc"];
-  return Timer(Duration(seconds: 10), () {
+  return Timer(Duration(seconds: 20), () {
     showDialog(
       context: context,
       builder: (ctx) => (CustomAlertDialogBox(args, device)),
