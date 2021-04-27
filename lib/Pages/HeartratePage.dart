@@ -65,18 +65,21 @@ class _HeartratePageState extends State<HeartratePage> {
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(10),
-                                child:
-                                    disconnect_button(context, widget.device),
-                              ),
-                            ],
-                          ),
                           Expanded(
                             flex: 1,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.all(10),
+                                  child:
+                                      disconnect_button(context, widget.device),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            flex: 6,
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
@@ -92,7 +95,7 @@ class _HeartratePageState extends State<HeartratePage> {
                                 ]),
                           ),
                           Expanded(
-                            flex: 1,
+                            flex: 6,
                             child: HeartRateScope,
                           ),
                         ],

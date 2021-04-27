@@ -66,18 +66,21 @@ class _TempPageState extends State<TempPage> {
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(10),
-                                child:
-                                    disconnect_button(context, widget.device),
-                              ),
-                            ],
-                          ),
                           Expanded(
                             flex: 1,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.all(10),
+                                  child:
+                                      disconnect_button(context, widget.device),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            flex: 6,
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
@@ -93,7 +96,7 @@ class _TempPageState extends State<TempPage> {
                                 ]),
                           ),
                           Expanded(
-                            flex: 1,
+                            flex: 6,
                             child: TemperatureScope,
                           ),
                         ],

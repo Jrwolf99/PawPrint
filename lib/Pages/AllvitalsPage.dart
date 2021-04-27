@@ -64,18 +64,21 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(10),
-                                child:
-                                    disconnect_button(context, widget.device),
-                              ),
-                            ],
+                          Expanded(
+                            flex: 1,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.all(10),
+                                  child:
+                                      disconnect_button(context, widget.device),
+                                ),
+                              ],
+                            ),
                           ),
                           Expanded(
-                            flex: 3,
+                            flex: 6,
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
@@ -109,15 +112,15 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                                 ]),
                           ),
                           Expanded(
-                            flex: 1,
+                            flex: 2,
                             child: HeartRateScope,
                           ),
                           Expanded(
-                            flex: 1,
+                            flex: 2,
                             child: OxygenScope,
                           ),
                           Expanded(
-                            flex: 1,
+                            flex: 2,
                             child: TemperatureScope,
                           ),
                         ],

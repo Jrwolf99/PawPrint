@@ -67,18 +67,22 @@ class _OxygenPageState extends State<OxygenPage> {
                         children: <Widget>[
                           Expanded(
                             flex: 1,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.all(10),
+                                  child:
+                                      disconnect_button(context, widget.device),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            flex: 6,
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Container(
-                                        child: disconnect_button(
-                                            context, widget.device),
-                                      ),
-                                    ],
-                                  ),
                                   Text('Current SP02 Level: ',
                                       style: TextStyle(
                                           fontSize: 18,
@@ -91,7 +95,7 @@ class _OxygenPageState extends State<OxygenPage> {
                                 ]),
                           ),
                           Expanded(
-                            flex: 1,
+                            flex: 6,
                             child: OxygenScope,
                           ),
                         ],
