@@ -64,15 +64,21 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.all(10),
+                                child:
+                                    disconnect_button(context, widget.device),
+                              ),
+                            ],
+                          ),
                           Expanded(
                             flex: 3,
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Container(
-                                    child: disconnect_button(
-                                        context, widget.device),
-                                  ),
                                   Text('Current Heart Rate: ',
                                       style: TextStyle(
                                           fontSize: 18,

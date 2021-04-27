@@ -70,6 +70,15 @@ class _OxygenPageState extends State<OxygenPage> {
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        child: disconnect_button(
+                                            context, widget.device),
+                                      ),
+                                    ],
+                                  ),
                                   Text('Current SP02 Level: ',
                                       style: TextStyle(
                                           fontSize: 18,

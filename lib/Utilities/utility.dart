@@ -3,6 +3,7 @@ import 'package:K9Harness/my_globals.dart';
 import 'dart:convert' show utf8;
 import 'dart:async';
 import 'package:flutter_blue/flutter_blue.dart';
+import 'package:K9Harness/main.dart';
 
 void passToLists(BuildContext context, BluetoothDevice device) {
   bool goodTempData = true;
@@ -50,9 +51,9 @@ void passToLists(BuildContext context, BluetoothDevice device) {
   }
 
   //start HR error timer if HR data is out of range.
-  if ((currHRValue <= (.75 * prevHRValue)) &&
-      (currHRValue >= (1.25 * prevHRValue))) {
-    goodHRData = false; //recieved bad HR data
+  if ((currHRValue <= (.25 * prevHRValue)) &&
+      (currHRValue >= (1.75 * prevHRValue))) {
+    goodHRData = false; //received bad HR data
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text("Out Of Range Heart Rate Data"),
@@ -100,14 +101,10 @@ String dataParser(List<int> dataFromDevice) {
 
 Timer startTimer(BuildContext context, BluetoothDevice device, String desc) {
   return Timer(Duration(seconds: 5), () {
-    debugPrint("DISCONNECTING DEVICE BECAUSE ERROR");
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Error Occurred: "),
-        duration: const Duration(seconds: 1),
-      ),
+    SnackBar(
+      content: Text("currently receiving bad data..."),
+      duration: const Duration(seconds: 1),
     );
-
     // showDialog(
     //   context: context,
     //   builder: (ctx) => (CustomAlertDialogBox(args, device)),
@@ -130,7 +127,7 @@ class CustomAlertDialogBox extends StatelessWidget {
         FlatButton(
           onPressed: () {
             device.disconnect();
-            Navigator.pushReplacementNamed(context, "/second");
+            Navigator.pushReplacementNamed(context, '/second');
           },
           child: Text("Close"),
         ),
@@ -147,7 +144,7 @@ Widget disconnect_button(BuildContext context, BluetoothDevice device) {
     ),
     onPressed: (() {
       device.disconnect();
-      Navigator.pushReplacementNamed(context, "/second");
+      RestartWidget.restartApp(context);
     }),
   );
 }
