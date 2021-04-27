@@ -45,11 +45,17 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
 
                       currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
+                      if (currentValue != null) {
+                        //if the data is good to be graphed
+                        if ((currentValue.contains("T")) &&
+                            (currentValue.contains("H")) &&
+                            (currentValue.contains("S"))) {
+                          //if the data is ALSO within good range of previous value, print.
 
-                      if (currentValue[0] == 'T') {
-                        updateVitalLists();
-                      } else {
-                        errorLists(context, widget.device);
+                          passToLists(context, widget.device);
+                        } else {
+                          errorLists(context, widget.device);
+                        }
                       }
 
                       //finally, return the stateless page with the value that we want: (currentTemperatureValue etc.)
@@ -59,7 +65,20 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Expanded(
-                            flex: 3,
+                            flex: 1,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.all(10),
+                                  child:
+                                      disconnect_button(context, widget.device),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            flex: 6,
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
@@ -93,21 +112,21 @@ class _AllvitalsPageState extends State<AllvitalsPage> {
                                 ]),
                           ),
                           Expanded(
-                            flex: 1,
+                            flex: 2,
                             child: HeartRateScope,
                           ),
                           Expanded(
-                            flex: 1,
+                            flex: 2,
                             child: OxygenScope,
                           ),
                           Expanded(
-                            flex: 1,
+                            flex: 2,
                             child: TemperatureScope,
                           ),
                         ],
                       ));
                     } else {
-                      return Text('Check the stream');
+                      return Center(child: Text('Waiting...'));
                     }
                   },
                 ),
