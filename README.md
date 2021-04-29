@@ -1,7 +1,18 @@
-# k9harness
+# PAWPRINT
 
 
-A new Flutter application.
+
+The K9 Vital Sensing System is a project
+made by students at the University of Alabama. 
+
+This app was developed by Jonathan Wolf
+Linkedin: 
+
+https://www.linkedin.com/in/jonathanrobertwolf/
+
+This app connects only to the Bluefruit Feather 32u4.
+The files can be modified, however, to connect to other bluetooth
+chips.
 
 ## Getting Started
 
