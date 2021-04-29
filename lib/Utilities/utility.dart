@@ -39,12 +39,12 @@ void passToLists(BuildContext context, BluetoothDevice device) {
   if ((currTempValue <= (.75 * prevTempValue)) &&
       (currTempValue >= (1.25 * prevTempValue))) {
     goodTempData = false; //received bad temp data
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Out Of Range Temperature Data"),
-        duration: const Duration(seconds: 2),
-      ),
-    );
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   const SnackBar(
+    //     content: Text("Out Of Range Temperature Data"),
+    //     duration: const Duration(seconds: 2),
+    //   ),
+    // );
   }
   if (goodTempData) {
     TemperatureList.add(currTempValue ?? 0);
@@ -54,12 +54,12 @@ void passToLists(BuildContext context, BluetoothDevice device) {
   if ((currHRValue <= (.25 * prevHRValue)) &&
       (currHRValue >= (1.75 * prevHRValue))) {
     goodHRData = false; //received bad HR data
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Out Of Range Heart Rate Data"),
-        duration: const Duration(seconds: 2),
-      ),
-    );
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   const SnackBar(
+    //     content: Text("Out Of Range Heart Rate Data"),
+    //     duration: const Duration(seconds: 2),
+    //   ),
+    // );
   }
   if (goodHRData) {
     HeartRateList.add(currHRValue ?? 0);
@@ -69,12 +69,12 @@ void passToLists(BuildContext context, BluetoothDevice device) {
   if ((currOxValue <= (prevOxValue - 5)) &&
       (currOxValue >= (prevOxValue + 5))) {
     goodOxData = false;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Out Of Range SPO2 Data"),
-        duration: const Duration(seconds: 2),
-      ),
-    );
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   const SnackBar(
+    //     content: Text("Out Of Range SPO2 Data"),
+    //     duration: const Duration(seconds: 2),
+    //   ),
+    // );
   }
   if (goodOxData) {
     OxygenList.add(currOxValue ?? 0);
