@@ -53,7 +53,7 @@ class _HeartratePageState extends State<HeartratePage> {
                         //scan from the number directly after "S" to the end of the array
                         //and count the amount of characters.
                         for (int i = (currentValue.indexOf("S") + 1);
-                            i < currentValue.length();
+                            i < currentValue.length;
                             i++) {
                           SP02CheckCount++;
                         }
