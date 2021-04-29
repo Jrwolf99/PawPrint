@@ -45,12 +45,31 @@ class _OxygenPageState extends State<OxygenPage> {
                       currentValue = dataParser(snapshot.data);
                       debugPrint(currentValue);
 
+                      //check if SPO2 data is 2 or more characters:
+                      bool SPO2Check = false;
+                      if (currentValue.contains("S")) {
+                        SPO2Check = false;
+                        int SP02CheckCount = 0;
+                        //scan from the number directly after "S" to the end of the array
+                        //and count the amount of characters.
+                        for (int i = (currentValue.indexOf("S") + 1);
+                            i < currentValue.length();
+                            i++) {
+                          SP02CheckCount++;
+                        }
+                        //if the
+                        if (SP02CheckCount >= 2) {
+                          SPO2Check = true;
+                        }
+                      }
+
                       //if the data is good to be graphed
                       if (currentValue != null) {
                         //if the data is good to be graphed
                         if ((currentValue.contains("T")) &&
                             (currentValue.contains("H")) &&
-                            (currentValue.contains("S"))) {
+                            (currentValue.contains("S")) &&
+                            (SPO2Check)) {
                           //if the data is ALSO within good range of previous value, print.
 
                           passToLists(context, widget.device);
