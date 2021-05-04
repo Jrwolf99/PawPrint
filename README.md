@@ -5,7 +5,7 @@
 The K9 Vital Sensing System is a project
 made by students at the University of Alabama. 
 
-This app was developed by Jonathan Wolf
+This Flutter app was developed by Jonathan Wolf - 
 Linkedin: 
 
 https://www.linkedin.com/in/jonathanrobertwolf/
