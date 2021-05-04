@@ -10,7 +10,7 @@ Linkedin:
 
 https://www.linkedin.com/in/jonathanrobertwolf/
 
-This app connects only to the Bluefruit Feather 32u4.
+This app connects only to the Adafruit Bluefruit Feather 32u4.
 The files can be modified, however, to connect to other bluetooth
 chips.
 
