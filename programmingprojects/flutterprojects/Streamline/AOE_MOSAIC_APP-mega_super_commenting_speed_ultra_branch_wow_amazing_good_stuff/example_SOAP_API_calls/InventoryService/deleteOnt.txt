@@ -1,0 +1,23 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://models.ws.common.adtran.com" xmlns:ser="http://serviceactivation.models.ws.common.adtran.com">
+  
+   <soapenv:Header>
+      <mod:aoewsHeader>
+         <aoewss>
+            <userName>admin</userName>
+            <password>password</password>
+         </aoewss>
+      </mod:aoewsHeader>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ser:deleteOntRequest>
+      	<equipment xsi:type="ser:gpon_eqpt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+               <ip_addr>10.10.1.5</ip_addr>
+               <systemName>KATNET</systemName>
+               <shelf>1</shelf>
+               <slot>1</slot>
+               <ont>1</ont>
+           	<pon>2</pon>
+           </equipment>
+      </ser:deleteOntRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

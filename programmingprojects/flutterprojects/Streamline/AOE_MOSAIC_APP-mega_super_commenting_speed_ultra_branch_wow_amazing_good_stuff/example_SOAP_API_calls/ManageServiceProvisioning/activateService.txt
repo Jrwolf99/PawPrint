@@ -1,0 +1,64 @@
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Header>
+      <ns4:aoewsHeader xmlns:ns2="http://serviceactivation.models.ws.common.adtran.com" xmlns:ns3="http://models.common.adtran.com" xmlns:ns4="http://models.ws.common.adtran.com" xmlns:ns5="http://framework.services.common.adtran.com" xmlns:ns6="http://schedule.models.common.adtran.com">
+         <aoewss>
+            <userName>admin</userName>
+            <password>password</password>
+         </aoewss>
+      </ns4:aoewsHeader>
+   </S:Header>
+   <S:Body>
+      <ns2:activateServiceRequest xmlns:ns2="http://serviceactivation.models.ws.common.adtran.com" xmlns:ns3="http://models.common.adtran.com" xmlns:ns4="http://models.ws.common.adtran.com" xmlns:ns5="http://framework.services.common.adtran.com" xmlns:ns6="http://schedule.models.common.adtran.com">
+         <provisioning>
+            <equipment xsi:type="ns2:gpon_eqpt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+               <ip_addr>10.10.1.5</ip_addr>
+               <systemName>KATNET</systemName>
+               <shelf>1</shelf>
+               <slot>1</slot>    
+		
+		<!--this changes depending on which ONT you want to activate-->		
+		<ont>1</ont>
+
+               <pon>2</pon>
+            </equipment>
+            <dataModel>
+		
+	       <!--these change depending on the subscriberID you want-->
+               <subscriberId>JUMBO</subscriberId>
+               <circuitId>JUMBO</circuitId>
+               
+		<serviceTemplateName>DATA_GPON_AUTO_ACTIVATE</serviceTemplateName>
+               <ontActivatorInfo>
+		
+		  <!--this changes depending on the serialNumber you want-->
+                  <ontSerialNo>cccc12341234</ontSerialNo>
+
+                  <aesMode>Disable</aesMode>
+                  <batteryMonitor>Disable</batteryMonitor>
+               </ontActivatorInfo>
+               <dataFlowActivatorInfo>
+                  <evcName>DATA_06</evcName>
+                  <designator>DATA</designator>
+                  <unis>
+                     <ontEthPortNumber>1</ontEthPortNumber>
+                     <staticIpAddrs>
+                        <ipAddress>10.11.12.17</ipAddress>
+                        <macAddress>00:00:00:00:00:00</macAddress>
+                     </staticIpAddrs>
+                  </unis>
+                  <flowType>Custom</flowType>
+                  <gatewayMacAddress>00:00:00:00:00:00</gatewayMacAddress>
+                  <gatewayIpAddress>10.100.1.30</gatewayIpAddress>
+               </dataFlowActivatorInfo>
+               <commonFlowParams>
+                  <downstreamBandwidth>1000000</downstreamBandwidth>
+                  <upstreamBandwidth>1000000</upstreamBandwidth>
+                  <downstreamShaperBandwidth>1000000</downstreamShaperBandwidth>
+                  <downstreamShaperPriority>0</downstreamShaperPriority>
+               </commonFlowParams>
+               <isSaveToDatabaseOnly>false</isSaveToDatabaseOnly>
+            </dataModel>
+         </provisioning>
+      </ns2:activateServiceRequest>
+   </S:Body>
+</S:Envelope>

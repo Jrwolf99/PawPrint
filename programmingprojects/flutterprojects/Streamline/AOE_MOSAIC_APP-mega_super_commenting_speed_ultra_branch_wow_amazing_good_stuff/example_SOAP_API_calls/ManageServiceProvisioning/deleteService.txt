@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mod="http://models.ws.common.adtran.com" xmlns:ns0="http://serviceactivation.models.ws.common.adtran.com">
+
+   <soapenv:Header>
+      <mod:aoewsHeader>
+         <aoewss>
+            <userName>admin</userName>
+            <password>password</password>
+         </aoewss>
+      </mod:aoewsHeader>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ns0:deleteServiceRequest>
+		
+		<!--Can find via equipment, subscriberID, or serial wrapper-->
+		<subscriberId>ORANGE</subscriberId>
+
+      </ns0:deleteServiceRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
