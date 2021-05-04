@@ -14,15 +14,12 @@ This app connects only to the Bluefruit Feather 32u4.
 The files can be modified, however, to connect to other bluetooth
 chips.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+REFERENCES:
+This project was completed with the integration of an already completed
+bluetooth project that was developed by the youtuber 
+ThatProject: https://www.youtube.com/channel/UCRr2LnXXXuHn4z0rBvpfG7w
 
-A few resources to get you started if this is your first Flutter project:
+This project also includes the bluetooth package written by Paul DeMarco.
+The license is included. 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
