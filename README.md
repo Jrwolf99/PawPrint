@@ -1,5 +1,5 @@
 # PAWPRINT
-
+All of my files and code can be found in /lib/
 
 
 The K9 Vital Sensing System is a project
